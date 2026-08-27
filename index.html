@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary Mehul ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+        }
+        h1 {
+            color: #ff4d6d;
+            font-size: 22px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .gif-container img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+            height: 50px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        #noBtn {
+            background-color: #ccc;
+            color: #333;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="gif-container">
+            <img id="statusGif" src="https://giphy.com" alt="Cute Gif">
+        </div>
+        <h1 id="questionText">Even when we fight or argue Mehul, do you know how much I still love you? ❤️</h1>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="nextStep()">Yes 🥰</button>
+            <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No 🥺</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+
+        const questions = {
+            1: "Even when we fight or argue Mehul, do you know how much I still love you? ❤️",
+            2: "Are you ready to forget our little misunderstandings and make this 1st anniversary unforgettable? ✨",
+            3: "Do you love me as much as I love you? 👉👈",
+            4: "Happy 1st Anniversary, my love! ❤️ No fight can ever be bigger than my love for you. Thank you for being in my life forever!"
+        };
+
+        const gifs = {
+            1: "https://giphy.com",
+            2: "https://giphy.com",
+            3: "https://giphy.com",
+            4: "https://giphy.com"
+        };
+
+        function nextStep() {
+            currentStep++;
+            
+            if (questions[currentStep]) {
+                document.getElementById("questionText").innerText = questions[currentStep];
+                if (gifs[currentStep]) {
+                    document.getElementById("statusGif").src = gifs[currentStep];
+                }
+                
+                if (currentStep === 4) {
+                    document.getElementById("noBtn").style.display = "none";
+                    document.getElementById("yesBtn").innerHTML = "Forever & Always! ❤️";
+                    document.getElementById("yesBtn").onclick = function() {
+                        alert("I love you, Mehul! 🎉 Happy 1st Anniversary! 🥂");
+                    };
+                }
+            }
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById("noBtn");
+            
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+            
+            noBtn.style.position = "fixed";
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
